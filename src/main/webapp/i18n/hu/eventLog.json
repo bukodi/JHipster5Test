@@ -1,0 +1,26 @@
+
+{
+    "jHipster5TestApp": {
+        "eventLog" : {
+            "home": {
+                "title": "EventLogs",
+                "createLabel": "Egy új Event Log létrehozása",
+                "createOrEditLabel": "Hozzon létre, vagy módosítson Event Logt"
+            },
+            "created": "Egy új Event Log lett létrehozva {{ param }} azonosítóval",
+            "updated": "A Event Log módosítva lett {{ param }} azonosítóval",
+            "deleted": "A Event Log törölve lett {{ param }} azonosítóval",
+            "delete": {
+                "question": "Biztos benne, hogy törölni szeretné az Event Logt {{ id }} azonosítóval?"
+            },
+            "detail": {
+                "title": "Event Log"
+            },
+            "instant": "Instant",
+            "eventTypeFqn": "Event Type Fqn",
+            "node": "Node",
+            "serachKey": "Serach Key",
+            "payload": "Payload"
+        }
+    }
+}

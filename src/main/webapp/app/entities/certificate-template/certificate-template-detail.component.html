@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="certificateTemplate">
+            <h2><span jhiTranslate="jHipster5TestApp.certificateTemplate.detail.title">Certificate Template</span> {{certificateTemplate.id}}</h2>
+            <hr>
+            <-alert-error></-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jHipster5TestApp.certificateTemplate.name">Name</span></dt>
+                <dd>
+                    <span>{{certificateTemplate.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.certificateTemplate.type">Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jHipster5TestApp.CertificateType.' + certificateTemplate.type}}">{{certificateTemplate.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.certificateTemplate.keyGeneration">Key Generation</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jHipster5TestApp.PKILocation.' + certificateTemplate.keyGeneration}}">{{certificateTemplate.keyGeneration}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.certificateTemplate.keyArchivation">Key Archivation</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jHipster5TestApp.PKILocation.' + certificateTemplate.keyArchivation}}">{{certificateTemplate.keyArchivation}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.certificateTemplate.ca">Ca</span></dt>
+                <dd>
+                    <div *ngIf="certificateTemplate.caId">
+                        <a [routerLink]="['/certificate-authority', certificateTemplate.caId, 'view']">{{certificateTemplate.caName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.certificateTemplate.ca2">Ca 2</span></dt>
+                <dd>
+                    <div *ngIf="certificateTemplate.ca2Id">
+                        <a [routerLink]="['/certificate-authority', certificateTemplate.ca2Id, 'view']">{{certificateTemplate.ca2Name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/certificate-template', certificateTemplate.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

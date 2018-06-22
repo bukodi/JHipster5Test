@@ -1,0 +1,27 @@
+
+{
+    "jHipster5TestApp": {
+        "certificateTemplate" : {
+            "home": {
+                "title": "CertificateTemplates",
+                "createLabel": "Egy új Certificate Template létrehozása",
+                "createOrEditLabel": "Hozzon létre, vagy módosítson Certificate Templatet"
+            },
+            "created": "Egy új Certificate Template lett létrehozva {{ param }} azonosítóval",
+            "updated": "A Certificate Template módosítva lett {{ param }} azonosítóval",
+            "deleted": "A Certificate Template törölve lett {{ param }} azonosítóval",
+            "delete": {
+                "question": "Biztos benne, hogy törölni szeretné az Certificate Templatet {{ id }} azonosítóval?"
+            },
+            "detail": {
+                "title": "Certificate Template"
+            },
+            "name": "Name",
+            "type": "Type",
+            "keyGeneration": "Key Generation",
+            "keyArchivation": "Key Archivation",
+            "ca": "Ca",
+            "ca2": "Ca 2"
+        }
+    }
+}

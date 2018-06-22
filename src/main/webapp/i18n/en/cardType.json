@@ -1,0 +1,22 @@
+
+{
+    "jHipster5TestApp": {
+        "cardType" : {
+            "home": {
+                "title": "Card Types",
+                "createLabel": "Create a new Card Type",
+                "createOrEditLabel": "Create or edit a Card Type"
+            },
+            "created": "A new Card Type is created with identifier {{ param }}",
+            "updated": "A Card Type is updated with identifier {{ param }}",
+            "deleted": "A Card Type is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Card Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Card Type"
+            },
+            "name": "Name"
+        }
+    }
+}

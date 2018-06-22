@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="certificate">
+            <h2><span jhiTranslate="jHipster5TestApp.certificate.detail.title">Certificate</span> {{certificate.id}}</h2>
+            <hr>
+            <-alert-error></-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jHipster5TestApp.certificate.subjectName">Subject Name</span></dt>
+                <dd>
+                    <span>{{certificate.subjectName}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.certificate.serialNumber">Serial Number</span></dt>
+                <dd>
+                    <span>{{certificate.serialNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.certificate.type">Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jHipster5TestApp.CertificateType.' + certificate.type}}">{{certificate.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.certificate.certData">Cert Data</span></dt>
+                <dd>
+                    <div *ngIf="certificate.certData">
+                        <a (click)="openFile(certificate.certDataContentType, certificate.certData)" jhiTranslate="entity.action.open">open</a>
+                        {{certificate.certDataContentType}}, {{byteSize(certificate.certData)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.certificate.privateKey">Private Key</span></dt>
+                <dd>
+                    <div *ngIf="certificate.privateKey">
+                        <a (click)="openFile(certificate.privateKeyContentType, certificate.privateKey)" jhiTranslate="entity.action.open">open</a>
+                        {{certificate.privateKeyContentType}}, {{byteSize(certificate.privateKey)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.certificate.ca">Ca</span></dt>
+                <dd>
+                    <div *ngIf="certificate.caId">
+                        <a [routerLink]="['/certificate-authority', certificate.caId, 'view']">{{certificate.caName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.certificate.template">Template</span></dt>
+                <dd>
+                    <div *ngIf="certificate.templateId">
+                        <a [routerLink]="['/certificate-template', certificate.templateId, 'view']">{{certificate.templateName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.certificate.identity">Identity</span></dt>
+                <dd>
+                    <div *ngIf="certificate.identityId">
+                        <a [routerLink]="['/identity', certificate.identityId, 'view']">{{certificate.identityName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/certificate', certificate.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

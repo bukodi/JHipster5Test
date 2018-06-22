@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="logicalCard">
+            <h2><span jhiTranslate="jHipster5TestApp.logicalCard.detail.title">Logical Card</span> {{logicalCard.id}}</h2>
+            <hr>
+            <-alert-error></-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jHipster5TestApp.logicalCard.name">Name</span></dt>
+                <dd>
+                    <span>{{logicalCard.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.logicalCard.physicalCard">Physical Card</span></dt>
+                <dd>
+                    <div *ngIf="logicalCard.physicalCardId">
+                        <a [routerLink]="['/physical-card', logicalCard.physicalCardId, 'view']">{{logicalCard.physicalCardVisualId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.logicalCard.certificates">Certificates</span></dt>
+                <dd>
+                    <span *ngFor="let certificates of logicalCard.certificates; let last = last">
+                        <a [routerLink]="['/certificate', certificates?.id, 'view' ]">{{certificates.subjectName}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/logical-card', logicalCard.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

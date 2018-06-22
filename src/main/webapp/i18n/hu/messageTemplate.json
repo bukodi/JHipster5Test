@@ -1,0 +1,25 @@
+
+{
+    "jHipster5TestApp": {
+        "messageTemplate" : {
+            "home": {
+                "title": "MessageTemplates",
+                "createLabel": "Egy új Message Template létrehozása",
+                "createOrEditLabel": "Hozzon létre, vagy módosítson Message Templatet"
+            },
+            "created": "Egy új Message Template lett létrehozva {{ param }} azonosítóval",
+            "updated": "A Message Template módosítva lett {{ param }} azonosítóval",
+            "deleted": "A Message Template törölve lett {{ param }} azonosítóval",
+            "delete": {
+                "question": "Biztos benne, hogy törölni szeretné az Message Templatet {{ id }} azonosítóval?"
+            },
+            "detail": {
+                "title": "Message Template"
+            },
+            "instant": "Instant",
+            "eventTypeFqn": "Event Type Fqn",
+            "template": "Template",
+            "source": "Source"
+        }
+    }
+}

@@ -1,0 +1,94 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jHipster5TestApp.certificate.home.title">Certificates</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-certificate" [routerLink]="['/certificate/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jHipster5TestApp.certificate.home.createLabel">
+            Create new Certificate
+            </span>
+        </button>
+    </h2>
+    <-alert></-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="certificates">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="subjectName"><span jhiTranslate="jHipster5TestApp.certificate.subjectName">Subject Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="serialNumber"><span jhiTranslate="jHipster5TestApp.certificate.serialNumber">Serial Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="type"><span jhiTranslate="jHipster5TestApp.certificate.type">Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="certData"><span jhiTranslate="jHipster5TestApp.certificate.certData">Cert Data</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="privateKey"><span jhiTranslate="jHipster5TestApp.certificate.privateKey">Private Key</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="caName"><span jhiTranslate="jHipster5TestApp.certificate.ca">Ca</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="templateName"><span jhiTranslate="jHipster5TestApp.certificate.template">Template</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="identityName"><span jhiTranslate="jHipster5TestApp.certificate.identity">Identity</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let certificate of certificates ;trackBy: trackId">
+                <td><a [routerLink]="['/certificate', certificate.id, 'view' ]">{{certificate.id}}</a></td>
+                <td>{{certificate.subjectName}}</td>
+                <td>{{certificate.serialNumber}}</td>
+                <td jhiTranslate="{{'jHipster5TestApp.CertificateType.' + certificate.type}}">{{certificate.type}}</td>
+                <td>
+                    <a *ngIf="certificate.certData" (click)="openFile(certificate.certDataContentType, certificate.certData)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="certificate.certData">{{certificate.certDataContentType}}, {{byteSize(certificate.certData)}}</span>
+                </td>
+                <td>
+                    <a *ngIf="certificate.privateKey" (click)="openFile(certificate.privateKeyContentType, certificate.privateKey)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="certificate.privateKey">{{certificate.privateKeyContentType}}, {{byteSize(certificate.privateKey)}}</span>
+                </td>
+                <td>
+                    <div *ngIf="certificate.caId">
+                        <a [routerLink]="['../certificate-authority', certificate.caId , 'view' ]" >{{certificate.caName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="certificate.templateId">
+                        <a [routerLink]="['../certificate-template', certificate.templateId , 'view' ]" >{{certificate.templateName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="certificate.identityId">
+                        <a [routerLink]="['../identity', certificate.identityId , 'view' ]" >{{certificate.identityName}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/certificate', certificate.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/certificate', certificate.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'certificate/'+ certificate.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="certificates && certificates.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

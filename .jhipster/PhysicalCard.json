@@ -1,0 +1,42 @@
+{
+    "name": "PhysicalCard",
+    "fields": [
+        {
+            "fieldName": "visualId",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "owner",
+            "otherEntityName": "user",
+            "otherEntityField": "login"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "type",
+            "otherEntityName": "cardType",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "logicalCards",
+            "otherEntityName": "logicalCard",
+            "otherEntityRelationshipName": "physicalCard"
+        }
+    ],
+    "changelogDate": "20180622171251",
+    "entityTableName": "app_physical_card",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

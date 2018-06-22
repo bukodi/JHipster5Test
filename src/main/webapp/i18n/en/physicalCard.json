@@ -1,0 +1,25 @@
+
+{
+    "jHipster5TestApp": {
+        "physicalCard" : {
+            "home": {
+                "title": "Physical Cards",
+                "createLabel": "Create a new Physical Card",
+                "createOrEditLabel": "Create or edit a Physical Card"
+            },
+            "created": "A new Physical Card is created with identifier {{ param }}",
+            "updated": "A Physical Card is updated with identifier {{ param }}",
+            "deleted": "A Physical Card is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Physical Card {{ id }}?"
+            },
+            "detail": {
+                "title": "Physical Card"
+            },
+            "visualId": "Visual Id",
+            "owner": "Owner",
+            "type": "Type",
+            "logicalCards": "Logical Cards"
+        }
+    }
+}

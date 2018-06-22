@@ -1,0 +1,11 @@
+{
+    "jHipster5TestApp": {
+        "CertificateType" : {
+            "null": "",
+            "SIGN": "SIGN",
+            "AUTH": "AUTH",
+            "ENCRYPT": "ENCRYPT",
+            "DEVICE": "DEVICE"
+        }
+    }
+}

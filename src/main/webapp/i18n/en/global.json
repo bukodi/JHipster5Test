@@ -7,6 +7,19 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entities",
+                "customProcess": "Custom Process",
+                "eventLog": "Event Log",
+                "messageTemplate": "Message Template",
+                "cardType": "Card Type",
+                "identityProfile": "Identity Profile",
+                "certificateTemplate": "Certificate Template",
+                "certificateAuthority": "Certificate Authority",
+                "directoryServer": "Directory Server",
+                "certificate": "Certificate",
+                "person": "Person",
+                "identity": "Identity",
+                "physicalCard": "Physical Card",
+                "logicalCard": "Logical Card",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

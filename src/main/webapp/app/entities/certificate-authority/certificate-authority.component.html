@@ -1,0 +1,71 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jHipster5TestApp.certificateAuthority.home.title">Certificate Authorities</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-certificate-authority" [routerLink]="['/certificate-authority/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jHipster5TestApp.certificateAuthority.home.createLabel">
+            Create new Certificate Authority
+            </span>
+        </button>
+    </h2>
+    <-alert></-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="certificateAuthorities">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span jhiTranslate="jHipster5TestApp.certificateAuthority.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="host"><span jhiTranslate="jHipster5TestApp.certificateAuthority.host">Host</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="customizationSource"><span jhiTranslate="jHipster5TestApp.certificateAuthority.customizationSource">Customization Source</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="customizationClass"><span jhiTranslate="jHipster5TestApp.certificateAuthority.customizationClass">Customization Class</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let certificateAuthority of certificateAuthorities ;trackBy: trackId">
+                <td><a [routerLink]="['/certificate-authority', certificateAuthority.id, 'view' ]">{{certificateAuthority.id}}</a></td>
+                <td>{{certificateAuthority.name}}</td>
+                <td>{{certificateAuthority.host}}</td>
+                <td>{{certificateAuthority.customizationSource}}</td>
+                <td>
+                    <a *ngIf="certificateAuthority.customizationClass" (click)="openFile(certificateAuthority.customizationClassContentType, certificateAuthority.customizationClass)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="certificateAuthority.customizationClass">{{certificateAuthority.customizationClassContentType}}, {{byteSize(certificateAuthority.customizationClass)}}</span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/certificate-authority', certificateAuthority.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/certificate-authority', certificateAuthority.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'certificate-authority/'+ certificateAuthority.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="certificateAuthorities && certificateAuthorities.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

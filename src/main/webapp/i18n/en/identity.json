@@ -1,0 +1,27 @@
+
+{
+    "jHipster5TestApp": {
+        "identity" : {
+            "home": {
+                "title": "Identities",
+                "createLabel": "Create a new Identity",
+                "createOrEditLabel": "Create or edit a Identity"
+            },
+            "created": "A new Identity is created with identifier {{ param }}",
+            "updated": "A Identity is updated with identifier {{ param }}",
+            "deleted": "A Identity is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Identity {{ id }}?"
+            },
+            "detail": {
+                "title": "Identity"
+            },
+            "name": "Name",
+            "externalName": "External Name",
+            "certificates": "Certificates",
+            "profile": "Profile",
+            "sourceSystem": "Source System",
+            "realPerson": "Real Person"
+        }
+    }
+}

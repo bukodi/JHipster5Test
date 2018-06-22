@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity LogicalCard.
+    -->
+    <changeSet id="20180622171252-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="physical_card_id"
+                                 baseTableName="app_logical_card"
+                                 constraintName="fk_logical_card_physical_card_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="app_physical_card"/>
+
+        <addForeignKeyConstraint baseColumnNames="logical_cards_id"
+                                 baseTableName="logical_card_certificates"
+                                 constraintName="fk_logical_card_certificates_logical_cards_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="app_logical_card"/>
+        <addForeignKeyConstraint baseColumnNames="certificates_id"
+                                 baseTableName="logical_card_certificates"
+                                 constraintName="fk_logical_card_certificates_certificates_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="app_certificate"/>
+        
+    </changeSet>
+</databaseChangeLog>

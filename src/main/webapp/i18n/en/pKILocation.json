@@ -1,0 +1,10 @@
+{
+    "jHipster5TestApp": {
+        "PKILocation" : {
+            "null": "",
+            "ENDENTITY": "ENDENTITY",
+            "CMS": "CMS",
+            "CA": "CA"
+        }
+    }
+}

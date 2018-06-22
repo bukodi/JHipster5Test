@@ -1,0 +1,53 @@
+{
+    "name": "CertificateAuthority",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "host",
+            "javadoc": "IP adress or hostname",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "customizationSource",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "customizationClass",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "template2",
+            "otherEntityName": "certificateTemplate",
+            "otherEntityRelationshipName": "ca2"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "template",
+            "otherEntityName": "certificateTemplate",
+            "otherEntityRelationshipName": "ca"
+        }
+    ],
+    "changelogDate": "20180622171246",
+    "javadoc": "Certificate Authority is a server component, what used for creating certificates.\nKnown CA types are: Microsoft CA, EJB CA, OpenSSL",
+    "entityTableName": "app_ca",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

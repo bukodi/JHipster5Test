@@ -1,0 +1,61 @@
+{
+    "name": "CertificateTemplate",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "CertificateType",
+            "fieldValues": "SIGN,AUTH,ENCRYPT,DEVICE",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "keyGeneration",
+            "fieldType": "PKILocation",
+            "fieldValues": "ENDENTITY,CMS,CA",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "keyArchivation",
+            "fieldType": "PKILocation",
+            "fieldValues": "ENDENTITY,CMS,CA",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "ca",
+            "otherEntityName": "certificateAuthority",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "ca2",
+            "otherEntityName": "certificateAuthority",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20180622171245",
+    "javadoc": "Certificate template is template for creating certificate requests.",
+    "entityTableName": "app_cert_template",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

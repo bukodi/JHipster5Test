@@ -1,0 +1,22 @@
+
+{
+    "jHipster5TestApp": {
+        "cardType" : {
+            "home": {
+                "title": "CardTypes",
+                "createLabel": "Egy új Card Type létrehozása",
+                "createOrEditLabel": "Hozzon létre, vagy módosítson Card Typet"
+            },
+            "created": "Egy új Card Type lett létrehozva {{ param }} azonosítóval",
+            "updated": "A Card Type módosítva lett {{ param }} azonosítóval",
+            "deleted": "A Card Type törölve lett {{ param }} azonosítóval",
+            "delete": {
+                "question": "Biztos benne, hogy törölni szeretné az Card Typet {{ id }} azonosítóval?"
+            },
+            "detail": {
+                "title": "Card Type"
+            },
+            "name": "Name"
+        }
+    }
+}

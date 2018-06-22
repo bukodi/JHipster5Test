@@ -1,0 +1,28 @@
+
+{
+    "jHipster5TestApp": {
+        "directoryServer" : {
+            "home": {
+                "title": "DirectoryServers",
+                "createLabel": "Egy új Directory Server létrehozása",
+                "createOrEditLabel": "Hozzon létre, vagy módosítson Directory Servert"
+            },
+            "created": "Egy új Directory Server lett létrehozva {{ param }} azonosítóval",
+            "updated": "A Directory Server módosítva lett {{ param }} azonosítóval",
+            "deleted": "A Directory Server törölve lett {{ param }} azonosítóval",
+            "delete": {
+                "question": "Biztos benne, hogy törölni szeretné az Directory Servert {{ id }} azonosítóval?"
+            },
+            "detail": {
+                "title": "Directory Server"
+            },
+            "name": "Name",
+            "host": "Host",
+            "customizationSource": "Customization Source",
+            "customizationClass": "Customization Class",
+            "help": {
+                "host": "IP adress or hostname"
+            }
+        }
+    }
+}

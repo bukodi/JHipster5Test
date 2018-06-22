@@ -1,0 +1,26 @@
+
+{
+    "jHipster5TestApp": {
+        "customProcess" : {
+            "home": {
+                "title": "Custom Processes",
+                "createLabel": "Create a new Custom Process",
+                "createOrEditLabel": "Create or edit a Custom Process"
+            },
+            "created": "A new Custom Process is created with identifier {{ param }}",
+            "updated": "A Custom Process is updated with identifier {{ param }}",
+            "deleted": "A Custom Process is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Custom Process {{ id }}?"
+            },
+            "detail": {
+                "title": "Custom Process"
+            },
+            "name": "Name",
+            "interfaceFqn": "Interface Fqn",
+            "template": "Template",
+            "source": "Source",
+            "scheduling": "Scheduling"
+        }
+    }
+}

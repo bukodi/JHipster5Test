@@ -1,0 +1,80 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jHipster5TestApp.certificateTemplate.home.title">Certificate Templates</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-certificate-template" [routerLink]="['/certificate-template/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jHipster5TestApp.certificateTemplate.home.createLabel">
+            Create new Certificate Template
+            </span>
+        </button>
+    </h2>
+    <-alert></-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="certificateTemplates">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span jhiTranslate="jHipster5TestApp.certificateTemplate.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="type"><span jhiTranslate="jHipster5TestApp.certificateTemplate.type">Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="keyGeneration"><span jhiTranslate="jHipster5TestApp.certificateTemplate.keyGeneration">Key Generation</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="keyArchivation"><span jhiTranslate="jHipster5TestApp.certificateTemplate.keyArchivation">Key Archivation</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="caName"><span jhiTranslate="jHipster5TestApp.certificateTemplate.ca">Ca</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="ca2Name"><span jhiTranslate="jHipster5TestApp.certificateTemplate.ca2">Ca 2</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let certificateTemplate of certificateTemplates ;trackBy: trackId">
+                <td><a [routerLink]="['/certificate-template', certificateTemplate.id, 'view' ]">{{certificateTemplate.id}}</a></td>
+                <td>{{certificateTemplate.name}}</td>
+                <td jhiTranslate="{{'jHipster5TestApp.CertificateType.' + certificateTemplate.type}}">{{certificateTemplate.type}}</td>
+                <td jhiTranslate="{{'jHipster5TestApp.PKILocation.' + certificateTemplate.keyGeneration}}">{{certificateTemplate.keyGeneration}}</td>
+                <td jhiTranslate="{{'jHipster5TestApp.PKILocation.' + certificateTemplate.keyArchivation}}">{{certificateTemplate.keyArchivation}}</td>
+                <td>
+                    <div *ngIf="certificateTemplate.caId">
+                        <a [routerLink]="['../certificate-authority', certificateTemplate.caId , 'view' ]" >{{certificateTemplate.caName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="certificateTemplate.ca2Id">
+                        <a [routerLink]="['../certificate-authority', certificateTemplate.ca2Id , 'view' ]" >{{certificateTemplate.ca2Name}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/certificate-template', certificateTemplate.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/certificate-template', certificateTemplate.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'certificate-template/'+ certificateTemplate.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="certificateTemplates && certificateTemplates.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+
+{
+    "jHipster5TestApp": {
+        "certificateAuthority" : {
+            "home": {
+                "title": "CertificateAuthorities",
+                "createLabel": "Egy új Certificate Authority létrehozása",
+                "createOrEditLabel": "Hozzon létre, vagy módosítson Certificate Authorityt"
+            },
+            "created": "Egy új Certificate Authority lett létrehozva {{ param }} azonosítóval",
+            "updated": "A Certificate Authority módosítva lett {{ param }} azonosítóval",
+            "deleted": "A Certificate Authority törölve lett {{ param }} azonosítóval",
+            "delete": {
+                "question": "Biztos benne, hogy törölni szeretné az Certificate Authorityt {{ id }} azonosítóval?"
+            },
+            "detail": {
+                "title": "Certificate Authority"
+            },
+            "name": "Name",
+            "host": "Host",
+            "customizationSource": "Customization Source",
+            "customizationClass": "Customization Class",
+            "template2": "Template 2",
+            "template": "Template",
+            "help": {
+                "host": "IP adress or hostname"
+            }
+        }
+    }
+}

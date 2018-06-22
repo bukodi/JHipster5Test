@@ -1,0 +1,26 @@
+
+{
+    "jHipster5TestApp": {
+        "customProcess" : {
+            "home": {
+                "title": "CustomProcesses",
+                "createLabel": "Egy új Custom Process létrehozása",
+                "createOrEditLabel": "Hozzon létre, vagy módosítson Custom Processt"
+            },
+            "created": "Egy új Custom Process lett létrehozva {{ param }} azonosítóval",
+            "updated": "A Custom Process módosítva lett {{ param }} azonosítóval",
+            "deleted": "A Custom Process törölve lett {{ param }} azonosítóval",
+            "delete": {
+                "question": "Biztos benne, hogy törölni szeretné az Custom Processt {{ id }} azonosítóval?"
+            },
+            "detail": {
+                "title": "Custom Process"
+            },
+            "name": "Name",
+            "interfaceFqn": "Interface Fqn",
+            "template": "Template",
+            "source": "Source",
+            "scheduling": "Scheduling"
+        }
+    }
+}

@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="person">
+            <h2><span jhiTranslate="jHipster5TestApp.person.detail.title">Person</span> {{person.id}}</h2>
+            <hr>
+            <-alert-error></-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jHipster5TestApp.person.name">Name</span></dt>
+                <dd>
+                    <span>{{person.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.person.title">Title</span></dt>
+                <dd>
+                    <span>{{person.title}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.person.firstName">First Name</span></dt>
+                <dd>
+                    <span>{{person.firstName}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.person.lastName">Last Name</span></dt>
+                <dd>
+                    <span>{{person.lastName}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.person.idCard">Id Card</span></dt>
+                <dd>
+                    <span>{{person.idCard}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.person.zipCode">Zip Code</span></dt>
+                <dd>
+                    <span>{{person.zipCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.person.city">City</span></dt>
+                <dd>
+                    <span>{{person.city}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.person.address">Address</span></dt>
+                <dd>
+                    <span>{{person.address}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.person.email">Email</span></dt>
+                <dd>
+                    <span>{{person.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.person.phone">Phone</span></dt>
+                <dd>
+                    <span>{{person.phone}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.person.additionalInfo">Additional Info</span></dt>
+                <dd>
+                    <span>{{person.additionalInfo}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.person.user">User</span></dt>
+                <dd>
+                    {{person.userLogin}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/person', person.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

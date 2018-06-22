@@ -1,0 +1,82 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jHipster5TestApp.identity.home.title">Identities</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-identity" [routerLink]="['/identity/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jHipster5TestApp.identity.home.createLabel">
+            Create new Identity
+            </span>
+        </button>
+    </h2>
+    <-alert></-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="identities">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span jhiTranslate="jHipster5TestApp.identity.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="externalName"><span jhiTranslate="jHipster5TestApp.identity.externalName">External Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="profileName"><span jhiTranslate="jHipster5TestApp.identity.profile">Profile</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sourceSystemName"><span jhiTranslate="jHipster5TestApp.identity.sourceSystem">Source System</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="realPersonName"><span jhiTranslate="jHipster5TestApp.identity.realPerson">Real Person</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let identity of identities ;trackBy: trackId">
+                <td><a [routerLink]="['/identity', identity.id, 'view' ]">{{identity.id}}</a></td>
+                <td>{{identity.name}}</td>
+                <td>{{identity.externalName}}</td>
+                <td>
+                    <div *ngIf="identity.profileId">
+                        <a [routerLink]="['../identity-profile', identity.profileId , 'view' ]" >{{identity.profileName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="identity.sourceSystemId">
+                        <a [routerLink]="['../directory-server', identity.sourceSystemId , 'view' ]" >{{identity.sourceSystemName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="identity.realPersonId">
+                        <a [routerLink]="['../person', identity.realPersonId , 'view' ]" >{{identity.realPersonName}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/identity', identity.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/identity', identity.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'identity/'+ identity.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="identities && identities.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

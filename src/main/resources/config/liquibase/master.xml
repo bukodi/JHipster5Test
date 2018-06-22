@@ -5,6 +5,25 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180622171240_added_entity_CustomProcess.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180622171241_added_entity_EventLog.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180622171242_added_entity_MessageTemplate.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180622171243_added_entity_CardType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180622171244_added_entity_IdentityProfile.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180622171245_added_entity_CertificateTemplate.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180622171246_added_entity_CertificateAuthority.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180622171247_added_entity_DirectoryServer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180622171248_added_entity_Certificate.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180622171249_added_entity_Person.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180622171250_added_entity_Identity.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180622171251_added_entity_PhysicalCard.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180622171252_added_entity_LogicalCard.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20180622171245_added_entity_constraints_CertificateTemplate.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180622171248_added_entity_constraints_Certificate.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180622171249_added_entity_constraints_Person.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180622171250_added_entity_constraints_Identity.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180622171251_added_entity_constraints_PhysicalCard.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180622171252_added_entity_constraints_LogicalCard.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

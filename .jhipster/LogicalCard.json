@@ -1,0 +1,38 @@
+{
+    "name": "LogicalCard",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "physicalCard",
+            "otherEntityName": "physicalCard",
+            "otherEntityField": "visualId"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "logicalCards",
+            "relationshipName": "certificates",
+            "otherEntityName": "certificate",
+            "otherEntityField": "subjectName",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20180622171252",
+    "entityTableName": "app_logical_card",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

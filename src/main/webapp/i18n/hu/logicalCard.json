@@ -1,0 +1,24 @@
+
+{
+    "jHipster5TestApp": {
+        "logicalCard" : {
+            "home": {
+                "title": "LogicalCards",
+                "createLabel": "Egy új Logical Card létrehozása",
+                "createOrEditLabel": "Hozzon létre, vagy módosítson Logical Cardt"
+            },
+            "created": "Egy új Logical Card lett létrehozva {{ param }} azonosítóval",
+            "updated": "A Logical Card módosítva lett {{ param }} azonosítóval",
+            "deleted": "A Logical Card törölve lett {{ param }} azonosítóval",
+            "delete": {
+                "question": "Biztos benne, hogy törölni szeretné az Logical Cardt {{ id }} azonosítóval?"
+            },
+            "detail": {
+                "title": "Logical Card"
+            },
+            "name": "Name",
+            "physicalCard": "Physical Card",
+            "certificates": "Certificates"
+        }
+    }
+}

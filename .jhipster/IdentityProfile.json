@@ -1,0 +1,30 @@
+{
+    "name": "IdentityProfile",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "identities",
+            "otherEntityName": "identity",
+            "otherEntityRelationshipName": "profile"
+        }
+    ],
+    "changelogDate": "20180622171244",
+    "javadoc": "Identity profile is template for creating identities.",
+    "entityTableName": "app_identity_profile",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
