@@ -1,0 +1,34 @@
+
+{
+    "jHipster5TestApp": {
+        "person" : {
+            "home": {
+                "title": "People",
+                "createLabel": "Create a new Person",
+                "createOrEditLabel": "Create or edit a Person"
+            },
+            "created": "A new Person is created with identifier {{ param }}",
+            "updated": "A Person is updated with identifier {{ param }}",
+            "deleted": "A Person is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person {{ id }}?"
+            },
+            "detail": {
+                "title": "Person"
+            },
+            "name": "Name",
+            "title": "Title",
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "idCard": "Id Card",
+            "zipCode": "Zip Code",
+            "city": "City",
+            "address": "Address",
+            "email": "Email",
+            "phone": "Phone",
+            "additionalInfo": "Additional Info",
+            "user": "User",
+            "identities": "Identities"
+        }
+    }
+}

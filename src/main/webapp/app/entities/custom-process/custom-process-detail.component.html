@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="customProcess">
+            <h2><span jhiTranslate="jHipster5TestApp.customProcess.detail.title">Custom Process</span> {{customProcess.id}}</h2>
+            <hr>
+            <-alert-error></-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jHipster5TestApp.customProcess.name">Name</span></dt>
+                <dd>
+                    <span>{{customProcess.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.customProcess.interfaceFqn">Interface Fqn</span></dt>
+                <dd>
+                    <span>{{customProcess.interfaceFqn}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.customProcess.template">Template</span></dt>
+                <dd>
+                    <span>{{customProcess.template}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.customProcess.source">Source</span></dt>
+                <dd>
+                    <span>{{customProcess.source}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.customProcess.scheduling">Scheduling</span></dt>
+                <dd>
+                    <span>{{customProcess.scheduling}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/custom-process', customProcess.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

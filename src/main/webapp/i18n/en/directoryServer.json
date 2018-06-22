@@ -1,0 +1,28 @@
+
+{
+    "jHipster5TestApp": {
+        "directoryServer" : {
+            "home": {
+                "title": "Directory Servers",
+                "createLabel": "Create a new Directory Server",
+                "createOrEditLabel": "Create or edit a Directory Server"
+            },
+            "created": "A new Directory Server is created with identifier {{ param }}",
+            "updated": "A Directory Server is updated with identifier {{ param }}",
+            "deleted": "A Directory Server is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Directory Server {{ id }}?"
+            },
+            "detail": {
+                "title": "Directory Server"
+            },
+            "name": "Name",
+            "host": "Host",
+            "customizationSource": "Customization Source",
+            "customizationClass": "Customization Class",
+            "help": {
+                "host": "IP adress or hostname"
+            }
+        }
+    }
+}

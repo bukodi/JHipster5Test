@@ -1,0 +1,55 @@
+{
+    "name": "Identity",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "externalName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "certificates",
+            "otherEntityName": "certificate",
+            "otherEntityRelationshipName": "identity"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "profile",
+            "otherEntityName": "identityProfile",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "sourceSystem",
+            "otherEntityName": "directoryServer",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "realPerson",
+            "otherEntityName": "person",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20180622171250",
+    "javadoc": "This an identity of a person.\nTypical use case, when",
+    "entityTableName": "app_identity",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

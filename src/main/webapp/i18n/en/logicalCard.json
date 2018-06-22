@@ -1,0 +1,24 @@
+
+{
+    "jHipster5TestApp": {
+        "logicalCard" : {
+            "home": {
+                "title": "Logical Cards",
+                "createLabel": "Create a new Logical Card",
+                "createOrEditLabel": "Create or edit a Logical Card"
+            },
+            "created": "A new Logical Card is created with identifier {{ param }}",
+            "updated": "A Logical Card is updated with identifier {{ param }}",
+            "deleted": "A Logical Card is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Logical Card {{ id }}?"
+            },
+            "detail": {
+                "title": "Logical Card"
+            },
+            "name": "Name",
+            "physicalCard": "Physical Card",
+            "certificates": "Certificates"
+        }
+    }
+}

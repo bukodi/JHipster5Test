@@ -1,0 +1,79 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="-event-log-heading" jhiTranslate="jHipster5TestApp.eventLog.home.createOrEditLabel">Create or edit a Event Log</h2>
+            <div>
+                <-alert-error></-alert-error>
+                <div class="form-group" [hidden]="!eventLog.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="eventLog.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jHipster5TestApp.eventLog.instant" for="field_instant">Instant</label>
+                    <div class="d-flex">
+                        <input id="field_instant" type="datetime-local" class="form-control" name="instant" [(ngModel)]="instant"
+                        required/>
+                    </div>
+                    <div [hidden]="!(editForm.controls.instant?.dirty && editForm.controls.instant?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.instant?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.instant?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jHipster5TestApp.eventLog.eventTypeFqn" for="field_eventTypeFqn">Event Type Fqn</label>
+                    <input type="text" class="form-control" name="eventTypeFqn" id="field_eventTypeFqn"
+                        [(ngModel)]="eventLog.eventTypeFqn" required/>
+                    <div [hidden]="!(editForm.controls.eventTypeFqn?.dirty && editForm.controls.eventTypeFqn?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.eventTypeFqn?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jHipster5TestApp.eventLog.node" for="field_node">Node</label>
+                    <input type="text" class="form-control" name="node" id="field_node"
+                        [(ngModel)]="eventLog.node" required/>
+                    <div [hidden]="!(editForm.controls.node?.dirty && editForm.controls.node?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.node?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jHipster5TestApp.eventLog.serachKey" for="field_serachKey">Serach Key</label>
+                    <input type="text" class="form-control" name="serachKey" id="field_serachKey"
+                        [(ngModel)]="eventLog.serachKey" required/>
+                    <div [hidden]="!(editForm.controls.serachKey?.dirty && editForm.controls.serachKey?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.serachKey?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jHipster5TestApp.eventLog.payload" for="field_payload">Payload</label>
+                    <input type="text" class="form-control" name="payload" id="field_payload"
+                        [(ngModel)]="eventLog.payload" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

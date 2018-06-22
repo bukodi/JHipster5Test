@@ -1,0 +1,23 @@
+
+{
+    "jHipster5TestApp": {
+        "identityProfile" : {
+            "home": {
+                "title": "IdentityProfiles",
+                "createLabel": "Egy új Identity Profile létrehozása",
+                "createOrEditLabel": "Hozzon létre, vagy módosítson Identity Profilet"
+            },
+            "created": "Egy új Identity Profile lett létrehozva {{ param }} azonosítóval",
+            "updated": "A Identity Profile módosítva lett {{ param }} azonosítóval",
+            "deleted": "A Identity Profile törölve lett {{ param }} azonosítóval",
+            "delete": {
+                "question": "Biztos benne, hogy törölni szeretné az Identity Profilet {{ id }} azonosítóval?"
+            },
+            "detail": {
+                "title": "Identity Profile"
+            },
+            "name": "Name",
+            "identities": "Identities"
+        }
+    }
+}

@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="-logical-card-heading" jhiTranslate="jHipster5TestApp.logicalCard.home.createOrEditLabel">Create or edit a Logical Card</h2>
+            <div>
+                <-alert-error></-alert-error>
+                <div class="form-group" [hidden]="!logicalCard.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="logicalCard.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jHipster5TestApp.logicalCard.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="logicalCard.name" required/>
+                    <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jHipster5TestApp.logicalCard.physicalCard" for="field_physicalCard">Physical Card</label>
+                    <select class="form-control" id="field_physicalCard" name="physicalCard" [(ngModel)]="logicalCard.physicalCardId"  required>
+                        <option *ngIf="!editForm.value.physicalCard" [ngValue]="null" selected></option>
+                        <option [ngValue]="physicalCardOption.id" *ngFor="let physicalCardOption of physicalcards; trackBy: trackPhysicalCardById">{{physicalCardOption.visualId}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.physicalCard?.dirty && editForm.controls.physicalCard?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.physicalCard?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="jHipster5TestApp.logicalCard.certificates" for="field_certificates">Certificates</label>
+                    <select class="form-control" id="field_certificates" multiple name="certificates" [(ngModel)]="logicalCard.certificates">
+                        <option [ngValue]="getSelected(logicalCard.certificates, certificateOption)" *ngFor="let certificateOption of certificates; trackBy: trackCertificateById">{{certificateOption.subjectName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

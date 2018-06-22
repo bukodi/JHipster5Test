@@ -1,0 +1,68 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jHipster5TestApp.messageTemplate.home.title">Message Templates</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-message-template" [routerLink]="['/message-template/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jHipster5TestApp.messageTemplate.home.createLabel">
+            Create new Message Template
+            </span>
+        </button>
+    </h2>
+    <-alert></-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="messageTemplates">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="instant"><span jhiTranslate="jHipster5TestApp.messageTemplate.instant">Instant</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="eventTypeFqn"><span jhiTranslate="jHipster5TestApp.messageTemplate.eventTypeFqn">Event Type Fqn</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="template"><span jhiTranslate="jHipster5TestApp.messageTemplate.template">Template</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="source"><span jhiTranslate="jHipster5TestApp.messageTemplate.source">Source</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let messageTemplate of messageTemplates ;trackBy: trackId">
+                <td><a [routerLink]="['/message-template', messageTemplate.id, 'view' ]">{{messageTemplate.id}}</a></td>
+                <td>{{messageTemplate.instant | date:'medium'}}</td>
+                <td>{{messageTemplate.eventTypeFqn}}</td>
+                <td>{{messageTemplate.template}}</td>
+                <td>{{messageTemplate.source}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/message-template', messageTemplate.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/message-template', messageTemplate.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'message-template/'+ messageTemplate.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="messageTemplates && messageTemplates.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

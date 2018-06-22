@@ -1,0 +1,118 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="-certificate-heading" jhiTranslate="jHipster5TestApp.certificate.home.createOrEditLabel">Create or edit a Certificate</h2>
+            <div>
+                <-alert-error></-alert-error>
+                <div class="form-group" [hidden]="!certificate.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="certificate.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jHipster5TestApp.certificate.subjectName" for="field_subjectName">Subject Name</label>
+                    <input type="text" class="form-control" name="subjectName" id="field_subjectName"
+                        [(ngModel)]="certificate.subjectName" required/>
+                    <div [hidden]="!(editForm.controls.subjectName?.dirty && editForm.controls.subjectName?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.subjectName?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jHipster5TestApp.certificate.serialNumber" for="field_serialNumber">Serial Number</label>
+                    <input type="text" class="form-control" name="serialNumber" id="field_serialNumber"
+                        [(ngModel)]="certificate.serialNumber" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jHipster5TestApp.certificate.type" for="field_type">Type</label>
+                    <select class="form-control" name="type" [(ngModel)]="certificate.type" id="field_type"  required>
+                        <option value="SIGN">{{'jHipster5TestApp.CertificateType.SIGN' | translate}}</option>
+                        <option value="AUTH">{{'jHipster5TestApp.CertificateType.AUTH' | translate}}</option>
+                        <option value="ENCRYPT">{{'jHipster5TestApp.CertificateType.ENCRYPT' | translate}}</option>
+                        <option value="DEVICE">{{'jHipster5TestApp.CertificateType.DEVICE' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.type?.dirty && editForm.controls.type?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.type?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jHipster5TestApp.certificate.certData" for="field_certData">Cert Data</label>
+                    <div>
+                        <div *ngIf="certificate.certData" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(certificate.certDataContentType, certificate.certData)" jhiTranslate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{certificate.certDataContentType}}, {{byteSize(certificate.certData)}}</span>
+                            <button type="button" (click)="certificate.certData=null;certificate.certDataContentType=null;"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_certData" (change)="setFileData($event, certificate, 'certData', false)" jhiTranslate="entity.action.addblob"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="certData" id="field_certData"
+                        [(ngModel)]="certificate.certData" />
+                    <input type="hidden" class="form-control" name="certDataContentType" id="field_certDataContentType"
+                        [(ngModel)]="certificate.certDataContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jHipster5TestApp.certificate.privateKey" for="field_privateKey">Private Key</label>
+                    <div>
+                        <div *ngIf="certificate.privateKey" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(certificate.privateKeyContentType, certificate.privateKey)" jhiTranslate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{certificate.privateKeyContentType}}, {{byteSize(certificate.privateKey)}}</span>
+                            <button type="button" (click)="certificate.privateKey=null;certificate.privateKeyContentType=null;"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_privateKey" (change)="setFileData($event, certificate, 'privateKey', false)" jhiTranslate="entity.action.addblob"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="privateKey" id="field_privateKey"
+                        [(ngModel)]="certificate.privateKey" />
+                    <input type="hidden" class="form-control" name="privateKeyContentType" id="field_privateKeyContentType"
+                        [(ngModel)]="certificate.privateKeyContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jHipster5TestApp.certificate.ca" for="field_ca">Ca</label>
+                    <select class="form-control" id="field_ca" name="ca" [(ngModel)]="certificate.caId"  required>
+                        <option *ngIf="!editForm.value.ca" [ngValue]="null" selected></option>
+                        <option [ngValue]="certificateAuthorityOption.id" *ngFor="let certificateAuthorityOption of certificateauthorities; trackBy: trackCertificateAuthorityById">{{certificateAuthorityOption.name}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.ca?.dirty && editForm.controls.ca?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.ca?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jHipster5TestApp.certificate.template" for="field_template">Template</label>
+                    <select class="form-control" id="field_template" name="template" [(ngModel)]="certificate.templateId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="certificateTemplateOption.id" *ngFor="let certificateTemplateOption of certificatetemplates; trackBy: trackCertificateTemplateById">{{certificateTemplateOption.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jHipster5TestApp.certificate.identity" for="field_identity">Identity</label>
+                    <select class="form-control" id="field_identity" name="identity" [(ngModel)]="certificate.identityId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="identityOption.id" *ngFor="let identityOption of identities; trackBy: trackIdentityById">{{identityOption.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

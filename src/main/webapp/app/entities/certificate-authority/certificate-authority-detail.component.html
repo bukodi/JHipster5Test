@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="certificateAuthority">
+            <h2><span jhiTranslate="jHipster5TestApp.certificateAuthority.detail.title">Certificate Authority</span> {{certificateAuthority.id}}</h2>
+            <hr>
+            <-alert-error></-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jHipster5TestApp.certificateAuthority.name">Name</span></dt>
+                <dd>
+                    <span>{{certificateAuthority.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.certificateAuthority.host" [ngbTooltip]="'jHipster5TestApp.certificateAuthority.help.host' | translate">Host</span></dt>
+                <dd>
+                    <span>{{certificateAuthority.host}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.certificateAuthority.customizationSource">Customization Source</span></dt>
+                <dd>
+                    <span>{{certificateAuthority.customizationSource}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.certificateAuthority.customizationClass">Customization Class</span></dt>
+                <dd>
+                    <div *ngIf="certificateAuthority.customizationClass">
+                        <a (click)="openFile(certificateAuthority.customizationClassContentType, certificateAuthority.customizationClass)" jhiTranslate="entity.action.open">open</a>
+                        {{certificateAuthority.customizationClassContentType}}, {{byteSize(certificateAuthority.customizationClass)}}
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/certificate-authority', certificateAuthority.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

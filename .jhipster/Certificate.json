@@ -1,0 +1,71 @@
+{
+    "name": "Certificate",
+    "fields": [
+        {
+            "fieldName": "subjectName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "serialNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "CertificateType",
+            "fieldValues": "SIGN,AUTH,ENCRYPT,DEVICE",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "certData",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "privateKey",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "ca",
+            "otherEntityName": "certificateAuthority",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "template",
+            "otherEntityName": "certificateTemplate",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "identity",
+            "otherEntityName": "identity",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "logicalCards",
+            "otherEntityName": "logicalCard",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "certificates"
+        }
+    ],
+    "changelogDate": "20180622171248",
+    "entityTableName": "app_certificate",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,34 @@
+
+{
+    "jHipster5TestApp": {
+        "person" : {
+            "home": {
+                "title": "People",
+                "createLabel": "Egy új Person létrehozása",
+                "createOrEditLabel": "Hozzon létre, vagy módosítson Persont"
+            },
+            "created": "Egy új Person lett létrehozva {{ param }} azonosítóval",
+            "updated": "A Person módosítva lett {{ param }} azonosítóval",
+            "deleted": "A Person törölve lett {{ param }} azonosítóval",
+            "delete": {
+                "question": "Biztos benne, hogy törölni szeretné az Persont {{ id }} azonosítóval?"
+            },
+            "detail": {
+                "title": "Person"
+            },
+            "name": "Name",
+            "title": "Title",
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "idCard": "Id Card",
+            "zipCode": "Zip Code",
+            "city": "City",
+            "address": "Address",
+            "email": "Email",
+            "phone": "Phone",
+            "additionalInfo": "Additional Info",
+            "user": "User",
+            "identities": "Identities"
+        }
+    }
+}

@@ -1,0 +1,155 @@
+/////////////////////////////////////////////////
+//
+//      Other entities
+//
+/////////////////////////////////////////////////
+entity CustomProcess (app_process) {
+	name String required
+	interfaceFqn String required
+    template Boolean
+    source String
+    scheduling String
+}
+
+entity EventLog (app_event_log) {
+	instant Instant required
+	eventTypeFqn String required
+    node String required
+    serachKey String required
+    payload String
+}
+
+entity MessageTemplate (app_event_log) {
+	instant Instant required
+	eventTypeFqn String required
+    template Boolean
+    source String
+}
+
+/////////////////////////////////////////////////
+//
+//      Base entities
+//
+/////////////////////////////////////////////////
+entity CardType (app_card_type) {
+	name String required
+}
+
+/**
+* Identity profile is template for creating identities.
+*/
+entity IdentityProfile (app_identity_profile) {
+	name String required
+}
+
+enum CertificateType {
+    SIGN, AUTH, ENCRYPT, DEVICE
+}
+
+enum PKILocation {
+    ENDENTITY, CMS, CA
+}
+
+/**
+* Certificate template is template for creating certificate requests.
+*/
+entity CertificateTemplate (app_cert_template){
+    name String required
+    type CertificateType required
+    keyGeneration PKILocation required
+    keyArchivation PKILocation required
+}
+relationship ManyToOne { CertificateTemplate{ca(name) required} to CertificateAuthority{template(name)} }
+
+/**
+* Certificate Authority is a server component, what used for creating certificates.
+* Known CA types are: Microsoft CA, EJB CA, OpenSSL 
+*/
+entity CertificateAuthority (app_ca) {
+	name String required
+
+	/** IP adress or hostname */
+	host String required
+
+	customizationSource String
+    customizationClass Blob
+}
+relationship OneToMany { CertificateAuthority{template2(name)} to CertificateTemplate{ca2(name)} }
+
+entity DirectoryServer (app_directory_server) {
+	name String required
+
+	/** IP adress or hostname */
+	host String required
+
+    customizationSource String
+    customizationClass Blob
+}
+
+/////////////////////////////////////////////////
+//
+//      Normal entities
+//
+/////////////////////////////////////////////////
+
+entity Certificate (app_certificate) {
+	subjectName String required
+    serialNumber String
+    type CertificateType required
+    certData Blob
+    privateKey Blob
+}
+relationship ManyToOne { Certificate{ca(name) required} to CertificateAuthority }
+relationship ManyToOne { Certificate{template(name) } to CertificateTemplate }
+
+
+/**
+* Person represent a real natural person.
+*/
+entity Person (app_person) {
+    name String
+	title String
+	firstName String required
+	lastName String required
+	idCard String
+	zipCode String
+	city String
+	address String
+	email String required
+	phone String
+	additionalInfo String
+}
+relationship OneToOne { Person{user(login)} to User}
+relationship OneToMany { Person{identities(name)} to Identity{realPerson(name)} }
+
+/**
+* This an identity of a person.
+* Typical use case, when 
+*  
+*/
+entity Identity (app_identity) {
+	name String required
+	externalName String required
+}
+relationship ManyToOne { Identity{profile(name)} to IdentityProfile{identities(name)}}
+relationship ManyToOne { Identity{sourceSystem(name)} to DirectoryServer }
+relationship OneToMany { Identity{certificates(subjectName)} to Certificate{identity(name)} }
+
+entity PhysicalCard (app_physical_card) {
+	visualId String required
+}
+//relationship OneToMany { PhysicalCard{logicalCards(name)} to LogicalCard{physicalCard(visualId)}}
+relationship ManyToOne { PhysicalCard{owner(login)} to User{physicalCards(visualId)}}
+relationship ManyToOne { PhysicalCard{type(name) required} to CardType}
+
+entity LogicalCard (app_logical_card) {
+	name String required
+}
+relationship ManyToOne { LogicalCard{physicalCard(visualId) required} to PhysicalCard{logicalCards(name)}}
+relationship ManyToMany { LogicalCard{certificates(subjectName)} to Certificate{logicalCards(name)} }
+
+
+dto * with mapstruct
+service * with serviceImpl
+paginate * with pagination
+

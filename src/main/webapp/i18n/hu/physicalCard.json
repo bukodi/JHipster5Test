@@ -1,0 +1,25 @@
+
+{
+    "jHipster5TestApp": {
+        "physicalCard" : {
+            "home": {
+                "title": "PhysicalCards",
+                "createLabel": "Egy új Physical Card létrehozása",
+                "createOrEditLabel": "Hozzon létre, vagy módosítson Physical Cardt"
+            },
+            "created": "Egy új Physical Card lett létrehozva {{ param }} azonosítóval",
+            "updated": "A Physical Card módosítva lett {{ param }} azonosítóval",
+            "deleted": "A Physical Card törölve lett {{ param }} azonosítóval",
+            "delete": {
+                "question": "Biztos benne, hogy törölni szeretné az Physical Cardt {{ id }} azonosítóval?"
+            },
+            "detail": {
+                "title": "Physical Card"
+            },
+            "visualId": "Visual Id",
+            "owner": "Owner",
+            "type": "Type",
+            "logicalCards": "Logical Cards"
+        }
+    }
+}

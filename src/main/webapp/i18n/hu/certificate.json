@@ -1,0 +1,30 @@
+
+{
+    "jHipster5TestApp": {
+        "certificate" : {
+            "home": {
+                "title": "Certificates",
+                "createLabel": "Egy új Certificate létrehozása",
+                "createOrEditLabel": "Hozzon létre, vagy módosítson Certificatet"
+            },
+            "created": "Egy új Certificate lett létrehozva {{ param }} azonosítóval",
+            "updated": "A Certificate módosítva lett {{ param }} azonosítóval",
+            "deleted": "A Certificate törölve lett {{ param }} azonosítóval",
+            "delete": {
+                "question": "Biztos benne, hogy törölni szeretné az Certificatet {{ id }} azonosítóval?"
+            },
+            "detail": {
+                "title": "Certificate"
+            },
+            "subjectName": "Subject Name",
+            "serialNumber": "Serial Number",
+            "type": "Type",
+            "certData": "Cert Data",
+            "privateKey": "Private Key",
+            "ca": "Ca",
+            "template": "Template",
+            "identity": "Identity",
+            "logicalCards": "Logical Cards"
+        }
+    }
+}

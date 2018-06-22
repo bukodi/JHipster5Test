@@ -1,0 +1,98 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="-certificate-template-heading" jhiTranslate="jHipster5TestApp.certificateTemplate.home.createOrEditLabel">Create or edit a Certificate Template</h2>
+            <div>
+                <-alert-error></-alert-error>
+                <div class="form-group" [hidden]="!certificateTemplate.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="certificateTemplate.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jHipster5TestApp.certificateTemplate.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="certificateTemplate.name" required/>
+                    <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jHipster5TestApp.certificateTemplate.type" for="field_type">Type</label>
+                    <select class="form-control" name="type" [(ngModel)]="certificateTemplate.type" id="field_type"  required>
+                        <option value="SIGN">{{'jHipster5TestApp.CertificateType.SIGN' | translate}}</option>
+                        <option value="AUTH">{{'jHipster5TestApp.CertificateType.AUTH' | translate}}</option>
+                        <option value="ENCRYPT">{{'jHipster5TestApp.CertificateType.ENCRYPT' | translate}}</option>
+                        <option value="DEVICE">{{'jHipster5TestApp.CertificateType.DEVICE' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.type?.dirty && editForm.controls.type?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.type?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jHipster5TestApp.certificateTemplate.keyGeneration" for="field_keyGeneration">Key Generation</label>
+                    <select class="form-control" name="keyGeneration" [(ngModel)]="certificateTemplate.keyGeneration" id="field_keyGeneration"  required>
+                        <option value="ENDENTITY">{{'jHipster5TestApp.PKILocation.ENDENTITY' | translate}}</option>
+                        <option value="CMS">{{'jHipster5TestApp.PKILocation.CMS' | translate}}</option>
+                        <option value="CA">{{'jHipster5TestApp.PKILocation.CA' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.keyGeneration?.dirty && editForm.controls.keyGeneration?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.keyGeneration?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jHipster5TestApp.certificateTemplate.keyArchivation" for="field_keyArchivation">Key Archivation</label>
+                    <select class="form-control" name="keyArchivation" [(ngModel)]="certificateTemplate.keyArchivation" id="field_keyArchivation"  required>
+                        <option value="ENDENTITY">{{'jHipster5TestApp.PKILocation.ENDENTITY' | translate}}</option>
+                        <option value="CMS">{{'jHipster5TestApp.PKILocation.CMS' | translate}}</option>
+                        <option value="CA">{{'jHipster5TestApp.PKILocation.CA' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.keyArchivation?.dirty && editForm.controls.keyArchivation?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.keyArchivation?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jHipster5TestApp.certificateTemplate.ca" for="field_ca">Ca</label>
+                    <select class="form-control" id="field_ca" name="ca" [(ngModel)]="certificateTemplate.caId"  required>
+                        <option *ngIf="!editForm.value.ca" [ngValue]="null" selected></option>
+                        <option [ngValue]="certificateAuthorityOption.id" *ngFor="let certificateAuthorityOption of certificateauthorities; trackBy: trackCertificateAuthorityById">{{certificateAuthorityOption.name}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.ca?.dirty && editForm.controls.ca?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.ca?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jHipster5TestApp.certificateTemplate.ca2" for="field_ca2">Ca 2</label>
+                    <select class="form-control" id="field_ca2" name="ca2" [(ngModel)]="certificateTemplate.ca2Id" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="certificateAuthorityOption.id" *ngFor="let certificateAuthorityOption of certificateauthorities; trackBy: trackCertificateAuthorityById">{{certificateAuthorityOption.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

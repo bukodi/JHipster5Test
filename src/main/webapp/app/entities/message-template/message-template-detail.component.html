@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="messageTemplate">
+            <h2><span jhiTranslate="jHipster5TestApp.messageTemplate.detail.title">Message Template</span> {{messageTemplate.id}}</h2>
+            <hr>
+            <-alert-error></-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jHipster5TestApp.messageTemplate.instant">Instant</span></dt>
+                <dd>
+                    <span>{{messageTemplate.instant}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.messageTemplate.eventTypeFqn">Event Type Fqn</span></dt>
+                <dd>
+                    <span>{{messageTemplate.eventTypeFqn}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.messageTemplate.template">Template</span></dt>
+                <dd>
+                    <span>{{messageTemplate.template}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.messageTemplate.source">Source</span></dt>
+                <dd>
+                    <span>{{messageTemplate.source}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/message-template', messageTemplate.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

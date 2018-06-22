@@ -1,0 +1,70 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jHipster5TestApp.customProcess.home.title">Custom Processes</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-custom-process" [routerLink]="['/custom-process/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jHipster5TestApp.customProcess.home.createLabel">
+            Create new Custom Process
+            </span>
+        </button>
+    </h2>
+    <-alert></-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="customProcesses">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span jhiTranslate="jHipster5TestApp.customProcess.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="interfaceFqn"><span jhiTranslate="jHipster5TestApp.customProcess.interfaceFqn">Interface Fqn</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="template"><span jhiTranslate="jHipster5TestApp.customProcess.template">Template</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="source"><span jhiTranslate="jHipster5TestApp.customProcess.source">Source</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="scheduling"><span jhiTranslate="jHipster5TestApp.customProcess.scheduling">Scheduling</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let customProcess of customProcesses ;trackBy: trackId">
+                <td><a [routerLink]="['/custom-process', customProcess.id, 'view' ]">{{customProcess.id}}</a></td>
+                <td>{{customProcess.name}}</td>
+                <td>{{customProcess.interfaceFqn}}</td>
+                <td>{{customProcess.template}}</td>
+                <td>{{customProcess.source}}</td>
+                <td>{{customProcess.scheduling}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/custom-process', customProcess.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/custom-process', customProcess.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'custom-process/'+ customProcess.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="customProcesses && customProcesses.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

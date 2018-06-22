@@ -1,0 +1,26 @@
+
+{
+    "jHipster5TestApp": {
+        "eventLog" : {
+            "home": {
+                "title": "Event Logs",
+                "createLabel": "Create a new Event Log",
+                "createOrEditLabel": "Create or edit a Event Log"
+            },
+            "created": "A new Event Log is created with identifier {{ param }}",
+            "updated": "A Event Log is updated with identifier {{ param }}",
+            "deleted": "A Event Log is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Event Log {{ id }}?"
+            },
+            "detail": {
+                "title": "Event Log"
+            },
+            "instant": "Instant",
+            "eventTypeFqn": "Event Type Fqn",
+            "node": "Node",
+            "serachKey": "Serach Key",
+            "payload": "Payload"
+        }
+    }
+}

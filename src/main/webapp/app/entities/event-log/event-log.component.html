@@ -1,0 +1,70 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jHipster5TestApp.eventLog.home.title">Event Logs</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-event-log" [routerLink]="['/event-log/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jHipster5TestApp.eventLog.home.createLabel">
+            Create new Event Log
+            </span>
+        </button>
+    </h2>
+    <-alert></-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="eventLogs">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="instant"><span jhiTranslate="jHipster5TestApp.eventLog.instant">Instant</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="eventTypeFqn"><span jhiTranslate="jHipster5TestApp.eventLog.eventTypeFqn">Event Type Fqn</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="node"><span jhiTranslate="jHipster5TestApp.eventLog.node">Node</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="serachKey"><span jhiTranslate="jHipster5TestApp.eventLog.serachKey">Serach Key</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="payload"><span jhiTranslate="jHipster5TestApp.eventLog.payload">Payload</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let eventLog of eventLogs ;trackBy: trackId">
+                <td><a [routerLink]="['/event-log', eventLog.id, 'view' ]">{{eventLog.id}}</a></td>
+                <td>{{eventLog.instant | date:'medium'}}</td>
+                <td>{{eventLog.eventTypeFqn}}</td>
+                <td>{{eventLog.node}}</td>
+                <td>{{eventLog.serachKey}}</td>
+                <td>{{eventLog.payload}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/event-log', eventLog.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/event-log', eventLog.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'event-log/'+ eventLog.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="eventLogs && eventLogs.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

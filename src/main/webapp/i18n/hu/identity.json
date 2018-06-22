@@ -1,0 +1,27 @@
+
+{
+    "jHipster5TestApp": {
+        "identity" : {
+            "home": {
+                "title": "Identities",
+                "createLabel": "Egy új Identity létrehozása",
+                "createOrEditLabel": "Hozzon létre, vagy módosítson Identityt"
+            },
+            "created": "Egy új Identity lett létrehozva {{ param }} azonosítóval",
+            "updated": "A Identity módosítva lett {{ param }} azonosítóval",
+            "deleted": "A Identity törölve lett {{ param }} azonosítóval",
+            "delete": {
+                "question": "Biztos benne, hogy törölni szeretné az Identityt {{ id }} azonosítóval?"
+            },
+            "detail": {
+                "title": "Identity"
+            },
+            "name": "Name",
+            "externalName": "External Name",
+            "certificates": "Certificates",
+            "profile": "Profile",
+            "sourceSystem": "Source System",
+            "realPerson": "Real Person"
+        }
+    }
+}

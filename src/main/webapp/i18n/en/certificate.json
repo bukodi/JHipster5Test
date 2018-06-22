@@ -1,0 +1,30 @@
+
+{
+    "jHipster5TestApp": {
+        "certificate" : {
+            "home": {
+                "title": "Certificates",
+                "createLabel": "Create a new Certificate",
+                "createOrEditLabel": "Create or edit a Certificate"
+            },
+            "created": "A new Certificate is created with identifier {{ param }}",
+            "updated": "A Certificate is updated with identifier {{ param }}",
+            "deleted": "A Certificate is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Certificate {{ id }}?"
+            },
+            "detail": {
+                "title": "Certificate"
+            },
+            "subjectName": "Subject Name",
+            "serialNumber": "Serial Number",
+            "type": "Type",
+            "certData": "Cert Data",
+            "privateKey": "Private Key",
+            "ca": "Ca",
+            "template": "Template",
+            "identity": "Identity",
+            "logicalCards": "Logical Cards"
+        }
+    }
+}

@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="eventLog">
+            <h2><span jhiTranslate="jHipster5TestApp.eventLog.detail.title">Event Log</span> {{eventLog.id}}</h2>
+            <hr>
+            <-alert-error></-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jHipster5TestApp.eventLog.instant">Instant</span></dt>
+                <dd>
+                    <span>{{eventLog.instant}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.eventLog.eventTypeFqn">Event Type Fqn</span></dt>
+                <dd>
+                    <span>{{eventLog.eventTypeFqn}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.eventLog.node">Node</span></dt>
+                <dd>
+                    <span>{{eventLog.node}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.eventLog.serachKey">Serach Key</span></dt>
+                <dd>
+                    <span>{{eventLog.serachKey}}</span>
+                </dd>
+                <dt><span jhiTranslate="jHipster5TestApp.eventLog.payload">Payload</span></dt>
+                <dd>
+                    <span>{{eventLog.payload}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/event-log', eventLog.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

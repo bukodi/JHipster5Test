@@ -1,0 +1,23 @@
+
+{
+    "jHipster5TestApp": {
+        "identityProfile" : {
+            "home": {
+                "title": "Identity Profiles",
+                "createLabel": "Create a new Identity Profile",
+                "createOrEditLabel": "Create or edit a Identity Profile"
+            },
+            "created": "A new Identity Profile is created with identifier {{ param }}",
+            "updated": "A Identity Profile is updated with identifier {{ param }}",
+            "deleted": "A Identity Profile is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Identity Profile {{ id }}?"
+            },
+            "detail": {
+                "title": "Identity Profile"
+            },
+            "name": "Name",
+            "identities": "Identities"
+        }
+    }
+}

@@ -1,0 +1,69 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="-certificate-authority-heading" jhiTranslate="jHipster5TestApp.certificateAuthority.home.createOrEditLabel">Create or edit a Certificate Authority</h2>
+            <div>
+                <-alert-error></-alert-error>
+                <div class="form-group" [hidden]="!certificateAuthority.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="certificateAuthority.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jHipster5TestApp.certificateAuthority.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="certificateAuthority.name" required/>
+                    <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jHipster5TestApp.certificateAuthority.host" for="field_host" [ngbTooltip]="'jHipster5TestApp.certificateAuthority.help.host' | translate">Host</label>
+                    <input type="text" class="form-control" name="host" id="field_host"
+                        [(ngModel)]="certificateAuthority.host" required/>
+                    <div [hidden]="!(editForm.controls.host?.dirty && editForm.controls.host?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.host?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jHipster5TestApp.certificateAuthority.customizationSource" for="field_customizationSource">Customization Source</label>
+                    <input type="text" class="form-control" name="customizationSource" id="field_customizationSource"
+                        [(ngModel)]="certificateAuthority.customizationSource" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jHipster5TestApp.certificateAuthority.customizationClass" for="field_customizationClass">Customization Class</label>
+                    <div>
+                        <div *ngIf="certificateAuthority.customizationClass" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(certificateAuthority.customizationClassContentType, certificateAuthority.customizationClass)" jhiTranslate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{certificateAuthority.customizationClassContentType}}, {{byteSize(certificateAuthority.customizationClass)}}</span>
+                            <button type="button" (click)="certificateAuthority.customizationClass=null;certificateAuthority.customizationClassContentType=null;"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_customizationClass" (change)="setFileData($event, certificateAuthority, 'customizationClass', false)" jhiTranslate="entity.action.addblob"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="customizationClass" id="field_customizationClass"
+                        [(ngModel)]="certificateAuthority.customizationClass" />
+                    <input type="hidden" class="form-control" name="customizationClassContentType" id="field_customizationClassContentType"
+                        [(ngModel)]="certificateAuthority.customizationClassContentType" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
