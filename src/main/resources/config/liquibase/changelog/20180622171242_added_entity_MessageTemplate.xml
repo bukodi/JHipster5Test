@@ -18,7 +18,7 @@
         Added the entity MessageTemplate.
     -->
     <changeSet id="20180622171242-1" author="jhipster">
-        <createTable tableName="app_event_log">
+        <createTable tableName="app_message_template">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -40,7 +40,7 @@
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        <dropDefaultValue tableName="app_event_log" columnName="instant" columnDataType="datetime"/>
+        <dropDefaultValue tableName="app_message_template" columnName="instant" columnDataType="datetime"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
