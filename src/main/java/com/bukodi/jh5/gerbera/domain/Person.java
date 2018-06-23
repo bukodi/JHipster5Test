@@ -61,10 +61,6 @@ public class Person implements Serializable {
     @Column(name = "additional_info")
     private String additionalInfo;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private User user;
-
     @OneToMany(mappedBy = "realPerson")
     private Set<Identity> identities = new HashSet<>();
 
@@ -218,19 +214,6 @@ public class Person implements Serializable {
 
     public void setAdditionalInfo(String additionalInfo) {
         this.additionalInfo = additionalInfo;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public Person user(User user) {
-        this.user = user;
-        return this;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public Set<Identity> getIdentities() {
