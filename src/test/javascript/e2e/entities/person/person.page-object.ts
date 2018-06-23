@@ -28,7 +28,6 @@ export class PersonUpdatePage {
     emailInput = element(by.id('field_email'));
     phoneInput = element(by.id('field_phone'));
     additionalInfoInput = element(by.id('field_additionalInfo'));
-    userSelect = element(by.id('field_user'));
 
     getPageTitle() {
         return this.pageTitle.getAttribute('jhiTranslate');
@@ -120,25 +119,6 @@ export class PersonUpdatePage {
 
     getAdditionalInfoInput() {
         return this.additionalInfoInput.getAttribute('value');
-    }
-
-    userSelectLastOption(): promise.Promise<void> {
-        return this.userSelect
-            .all(by.tagName('option'))
-            .last()
-            .click();
-    }
-
-    userSelectOption(option): promise.Promise<void> {
-        return this.userSelect.sendKeys(option);
-    }
-
-    getUserSelect(): ElementFinder {
-        return this.userSelect;
-    }
-
-    getUserSelectedOption() {
-        return this.userSelect.element(by.css('option:checked')).getText();
     }
 
     save(): promise.Promise<void> {
