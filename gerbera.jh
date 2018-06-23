@@ -119,7 +119,7 @@ entity Person (app_person) {
 	phone String
 	additionalInfo String
 }
-relationship OneToOne { Person{user(login)} to User}
+// relationship OneToOne { Person{user(login)} to User}
 relationship OneToMany { Person{identities(name)} to Identity{realPerson(name)} }
 
 /**
