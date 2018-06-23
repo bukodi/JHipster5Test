@@ -19,7 +19,7 @@ entity EventLog (app_event_log) {
     payload String
 }
 
-entity MessageTemplate (app_event_log) {
+entity MessageTemplate (app_message_template) {
 	instant Instant required
 	eventTypeFqn String required
     template Boolean

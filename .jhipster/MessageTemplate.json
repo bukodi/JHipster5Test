@@ -26,7 +26,7 @@
     ],
     "relationships": [],
     "changelogDate": "20180622171242",
-    "entityTableName": "app_event_log",
+    "entityTableName": "app_message_template",
     "dto": "mapstruct",
     "pagination": "pagination",
     "service": "serviceImpl",

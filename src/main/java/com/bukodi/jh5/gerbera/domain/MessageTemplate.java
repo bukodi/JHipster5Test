@@ -12,7 +12,7 @@ import java.util.Objects;
  * A MessageTemplate.
  */
 @Entity
-@Table(name = "app_event_log")
+@Table(name = "app_message_template")
 public class MessageTemplate implements Serializable {
 
     private static final long serialVersionUID = 1L;
