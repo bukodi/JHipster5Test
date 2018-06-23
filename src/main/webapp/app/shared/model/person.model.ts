@@ -13,8 +13,6 @@ export interface IPerson {
     email?: string;
     phone?: string;
     additionalInfo?: string;
-    userLogin?: string;
-    userId?: number;
     identities?: IIdentity[];
 }
 
@@ -32,8 +30,6 @@ export class Person implements IPerson {
         public email?: string,
         public phone?: string,
         public additionalInfo?: string,
-        public userLogin?: string,
-        public userId?: number,
         public identities?: IIdentity[]
     ) {}
 }

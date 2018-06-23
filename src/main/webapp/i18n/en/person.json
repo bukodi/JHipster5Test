@@ -27,7 +27,6 @@
             "email": "Email",
             "phone": "Phone",
             "additionalInfo": "Additional Info",
-            "user": "User",
             "identities": "Identities"
         }
     }
