@@ -61,8 +61,15 @@ public class Person implements Serializable {
     @Column(name = "additional_info")
     private String additionalInfo;
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private User user;
+
     @OneToMany(mappedBy = "realPerson")
     private Set<Identity> identities = new HashSet<>();
+
+    @OneToMany(mappedBy = "owner")
+    private Set<PhysicalCard> physicalCards = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -216,6 +223,19 @@ public class Person implements Serializable {
         this.additionalInfo = additionalInfo;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public Person user(User user) {
+        this.user = user;
+        return this;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Set<Identity> getIdentities() {
         return identities;
     }
@@ -239,6 +259,31 @@ public class Person implements Serializable {
 
     public void setIdentities(Set<Identity> identities) {
         this.identities = identities;
+    }
+
+    public Set<PhysicalCard> getPhysicalCards() {
+        return physicalCards;
+    }
+
+    public Person physicalCards(Set<PhysicalCard> physicalCards) {
+        this.physicalCards = physicalCards;
+        return this;
+    }
+
+    public Person addPhysicalCards(PhysicalCard physicalCard) {
+        this.physicalCards.add(physicalCard);
+        physicalCard.setOwner(this);
+        return this;
+    }
+
+    public Person removePhysicalCards(PhysicalCard physicalCard) {
+        this.physicalCards.remove(physicalCard);
+        physicalCard.setOwner(null);
+        return this;
+    }
+
+    public void setPhysicalCards(Set<PhysicalCard> physicalCards) {
+        this.physicalCards = physicalCards;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

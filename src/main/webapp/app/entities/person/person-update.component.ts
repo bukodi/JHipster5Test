@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { JhiAlertService } from 'ng-jhipster';
 
 import { IPerson } from 'app/shared/model/person.model';
 import { PersonService } from './person.service';
+import { IUser, UserService } from 'app/core';
 
 @Component({
     selector: '-person-update',
@@ -14,13 +16,26 @@ export class PersonUpdateComponent implements OnInit {
     private _person: IPerson;
     isSaving: boolean;
 
-    constructor(private personService: PersonService, private activatedRoute: ActivatedRoute) {}
+    users: IUser[];
+
+    constructor(
+        private jhiAlertService: JhiAlertService,
+        private personService: PersonService,
+        private userService: UserService,
+        private activatedRoute: ActivatedRoute
+    ) {}
 
     ngOnInit() {
         this.isSaving = false;
         this.activatedRoute.data.subscribe(({ person }) => {
             this.person = person;
         });
+        this.userService.query().subscribe(
+            (res: HttpResponse<IUser[]>) => {
+                this.users = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
     }
 
     previousState() {
@@ -47,6 +62,14 @@ export class PersonUpdateComponent implements OnInit {
 
     private onSaveError() {
         this.isSaving = false;
+    }
+
+    private onError(errorMessage: string) {
+        this.jhiAlertService.error(errorMessage, null, null);
+    }
+
+    trackUserById(index: number, item: IUser) {
+        return item.id;
     }
     get person() {
         return this._person;

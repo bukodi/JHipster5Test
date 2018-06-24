@@ -26,6 +26,7 @@
             <th jhiSortBy="email"><span jhiTranslate="jHipster5TestApp.person.email">Email</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="phone"><span jhiTranslate="jHipster5TestApp.person.phone">Phone</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="additionalInfo"><span jhiTranslate="jHipster5TestApp.person.additionalInfo">Additional Info</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="userLogin"><span jhiTranslate="jHipster5TestApp.person.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -43,6 +44,9 @@
                 <td>{{person.email}}</td>
                 <td>{{person.phone}}</td>
                 <td>{{person.additionalInfo}}</td>
+                <td>
+                    {{person.userLogin}}
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

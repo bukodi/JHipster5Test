@@ -6,7 +6,8 @@ import { JhiAlertService } from 'ng-jhipster';
 
 import { IPhysicalCard } from 'app/shared/model/physical-card.model';
 import { PhysicalCardService } from './physical-card.service';
-import { IUser, UserService } from 'app/core';
+import { IPerson } from 'app/shared/model/person.model';
+import { PersonService } from 'app/entities/person';
 import { ICardType } from 'app/shared/model/card-type.model';
 import { CardTypeService } from 'app/entities/card-type';
 
@@ -18,14 +19,14 @@ export class PhysicalCardUpdateComponent implements OnInit {
     private _physicalCard: IPhysicalCard;
     isSaving: boolean;
 
-    users: IUser[];
+    people: IPerson[];
 
     cardtypes: ICardType[];
 
     constructor(
         private jhiAlertService: JhiAlertService,
         private physicalCardService: PhysicalCardService,
-        private userService: UserService,
+        private personService: PersonService,
         private cardTypeService: CardTypeService,
         private activatedRoute: ActivatedRoute
     ) {}
@@ -35,9 +36,9 @@ export class PhysicalCardUpdateComponent implements OnInit {
         this.activatedRoute.data.subscribe(({ physicalCard }) => {
             this.physicalCard = physicalCard;
         });
-        this.userService.query().subscribe(
-            (res: HttpResponse<IUser[]>) => {
-                this.users = res.body;
+        this.personService.query().subscribe(
+            (res: HttpResponse<IPerson[]>) => {
+                this.people = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -79,7 +80,7 @@ export class PhysicalCardUpdateComponent implements OnInit {
         this.jhiAlertService.error(errorMessage, null, null);
     }
 
-    trackUserById(index: number, item: IUser) {
+    trackPersonById(index: number, item: IPerson) {
         return item.id;
     }
 

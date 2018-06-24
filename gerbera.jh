@@ -119,7 +119,7 @@ entity Person (app_person) {
 	phone String
 	additionalInfo String
 }
-// relationship OneToOne { Person{user(login)} to User}
+relationship OneToOne { Person{user(login)} to User}
 relationship OneToMany { Person{identities(name)} to Identity{realPerson(name)} }
 
 /**
@@ -139,7 +139,7 @@ entity PhysicalCard (app_physical_card) {
 	visualId String required
 }
 //relationship OneToMany { PhysicalCard{logicalCards(name)} to LogicalCard{physicalCard(visualId)}}
-relationship ManyToOne { PhysicalCard{owner(login)} to User{physicalCards(visualId)}}
+relationship ManyToOne { PhysicalCard{owner(login)} to Person{physicalCards(visualId)}}
 relationship ManyToOne { PhysicalCard{type(name) required} to CardType}
 
 entity LogicalCard (app_logical_card) {

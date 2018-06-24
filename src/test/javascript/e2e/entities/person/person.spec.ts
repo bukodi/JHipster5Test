@@ -52,6 +52,7 @@ describe('Person e2e test', () => {
         expect(personUpdatePage.getPhoneInput()).toMatch('phone');
         personUpdatePage.setAdditionalInfoInput('additionalInfo');
         expect(personUpdatePage.getAdditionalInfoInput()).toMatch('additionalInfo');
+        personUpdatePage.userSelectLastOption();
         personUpdatePage.save();
         expect(personUpdatePage.getSaveButton().isPresent()).toBeFalsy();
     });

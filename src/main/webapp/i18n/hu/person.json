@@ -27,7 +27,9 @@
             "email": "Email",
             "phone": "Phone",
             "additionalInfo": "Additional Info",
-            "identities": "Identities"
+            "user": "User",
+            "identities": "Identities",
+            "physicalCards": "Physical Cards"
         }
     }
 }
