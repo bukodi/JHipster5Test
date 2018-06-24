@@ -29,8 +29,8 @@ public class PhysicalCard implements Serializable {
     private String visualId;
 
     @ManyToOne
-    @JsonIgnoreProperties("")
-    private User owner;
+    @JsonIgnoreProperties("physicalCards")
+    private Person owner;
 
     @ManyToOne(optional = false)
     @NotNull
@@ -62,17 +62,17 @@ public class PhysicalCard implements Serializable {
         this.visualId = visualId;
     }
 
-    public User getOwner() {
+    public Person getOwner() {
         return owner;
     }
 
-    public PhysicalCard owner(User user) {
-        this.owner = user;
+    public PhysicalCard owner(Person person) {
+        this.owner = person;
         return this;
     }
 
-    public void setOwner(User user) {
-        this.owner = user;
+    public void setOwner(Person person) {
+        this.owner = person;
     }
 
     public CardType getType() {

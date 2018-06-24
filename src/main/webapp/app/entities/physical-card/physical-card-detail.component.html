@@ -11,7 +11,9 @@
                 </dd>
                 <dt><span jhiTranslate="jHipster5TestApp.physicalCard.owner">Owner</span></dt>
                 <dd>
-                    {{physicalCard.ownerLogin}}
+                    <div *ngIf="physicalCard.ownerId">
+                        <a [routerLink]="['/person', physicalCard.ownerId, 'view']">{{physicalCard.ownerLogin}}</a>
+                    </div>
                 </dd>
                 <dt><span jhiTranslate="jHipster5TestApp.physicalCard.type">Type</span></dt>
                 <dd>

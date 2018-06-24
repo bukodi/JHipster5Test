@@ -12,7 +12,7 @@
                                  baseTableName="app_physical_card"
                                  constraintName="fk_physical_card_owner_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="_user"/>
+                                 referencedTableName="app_person"/>
 
         <addForeignKeyConstraint baseColumnNames="type_id"
                                  baseTableName="app_physical_card"

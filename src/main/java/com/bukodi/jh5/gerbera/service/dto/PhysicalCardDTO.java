@@ -42,16 +42,16 @@ public class PhysicalCardDTO implements Serializable {
         return ownerId;
     }
 
-    public void setOwnerId(Long userId) {
-        this.ownerId = userId;
+    public void setOwnerId(Long personId) {
+        this.ownerId = personId;
     }
 
     public String getOwnerLogin() {
         return ownerLogin;
     }
 
-    public void setOwnerLogin(String userLogin) {
-        this.ownerLogin = userLogin;
+    public void setOwnerLogin(String personLogin) {
+        this.ownerLogin = personLogin;
     }
 
     public Long getTypeId() {

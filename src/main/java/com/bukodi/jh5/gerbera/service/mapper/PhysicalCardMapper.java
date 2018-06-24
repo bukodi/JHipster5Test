@@ -8,7 +8,7 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity PhysicalCard and its DTO PhysicalCardDTO.
  */
-@Mapper(componentModel = "spring", uses = {UserMapper.class, CardTypeMapper.class})
+@Mapper(componentModel = "spring", uses = {PersonMapper.class, CardTypeMapper.class})
 public interface PhysicalCardMapper extends EntityMapper<PhysicalCardDTO, PhysicalCard> {
 
     @Mapping(source = "owner.id", target = "ownerId")

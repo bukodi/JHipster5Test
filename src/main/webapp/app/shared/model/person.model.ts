@@ -1,4 +1,5 @@
 import { IIdentity } from 'app/shared/model//identity.model';
+import { IPhysicalCard } from 'app/shared/model//physical-card.model';
 
 export interface IPerson {
     id?: number;
@@ -13,7 +14,10 @@ export interface IPerson {
     email?: string;
     phone?: string;
     additionalInfo?: string;
+    userLogin?: string;
+    userId?: number;
     identities?: IIdentity[];
+    physicalCards?: IPhysicalCard[];
 }
 
 export class Person implements IPerson {
@@ -30,6 +34,9 @@ export class Person implements IPerson {
         public email?: string,
         public phone?: string,
         public additionalInfo?: string,
-        public identities?: IIdentity[]
+        public userLogin?: string,
+        public userId?: number,
+        public identities?: IIdentity[],
+        public physicalCards?: IPhysicalCard[]
     ) {}
 }
